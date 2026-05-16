@@ -54,8 +54,3 @@ markers = [
     "regression: regression test",
     "wecom: wecom interface test"
 ]
-
-
-
-[tool.hatch.build.targets.wheel]
-packages = ["common", "config", "services"]
