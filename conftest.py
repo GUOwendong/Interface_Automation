@@ -6,6 +6,7 @@
 """
 
 import pytest
+
 from common.api_client import ApiClient
 from common.log_utils import log
 from common.wecom_token import get_token

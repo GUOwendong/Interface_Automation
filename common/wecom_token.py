@@ -2,10 +2,12 @@
 # -*- coding: utf-8 -*-
 """企业微信 AccessToken 管理器（单例，自动缓存）"""
 import time
+
 import requests
+
 from common.log_utils import log
-from common.wecom_error_code import is_success, extract_error_from_response
-from config.global_config import WECOM_CONFIG, TIMEOUT
+from common.wecom_error_code import extract_error_from_response, is_success
+from config.global_config import TIMEOUT, WECOM_CONFIG
 
 
 class WeComTokenManager:
@@ -27,10 +29,7 @@ class WeComTokenManager:
 
         log.info("获取新的 access_token")
         url = f"{WECOM_CONFIG['base_url']}/cgi-bin/gettoken"
-        params = {
-            "corpid": WECOM_CONFIG["corp_id"],
-            "corpsecret": WECOM_CONFIG["contact_secret"]
-        }
+        params = {"corpid": WECOM_CONFIG["corp_id"], "corpsecret": WECOM_CONFIG["contact_secret"]}
         try:
             resp = requests.get(url, params=params, timeout=TIMEOUT)
             resp.raise_for_status()

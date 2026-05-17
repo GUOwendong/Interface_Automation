@@ -5,16 +5,16 @@
 @Desc: 测试执行入口，支持环境切换
 """
 
-import os
-import sys
 import argparse
+import os
 import subprocess
+import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 
 from common.log_utils import log
-from config.global_config import ALLURE_RESULTS_DIR, ALLURE_REPORT_DIR, Env
+from config.global_config import ALLURE_REPORT_DIR, ALLURE_RESULTS_DIR, Env
 
 
 def run_tests(env: str = "test") -> bool:

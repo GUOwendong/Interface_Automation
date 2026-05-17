@@ -1,0 +1,40 @@
+stages:
+  - test
+  - report
+
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+
+cache:
+  paths:
+    - .cache/pip
+    - .venv
+
+test:
+  stage: test
+  image: python:3.12
+  before_script:
+    - curl -LsSf https://astral.sh/uv/install.sh | sh
+    - export PATH="$HOME/.cargo/bin:$PATH"
+    - uv sync
+  script:
+    - uv run pytest tests/ -v --alluredir=reports/allure-results
+  artifacts:
+    when: always
+    paths:
+      - reports/allure-results
+  variables:
+    WECOM_CORP_ID: $WECOM_CORP_ID
+    WECOM_CONTACT_SECRET: $WECOM_CONTACT_SECRET
+
+generate_report:
+  stage: report
+  image: frankescobar/allure-docker-service
+  when: always
+  dependencies:
+    - test
+  script:
+    - allure generate reports/allure-results -o reports/allure-report --clean
+  artifacts:
+    paths:
+      - reports/allure-report

@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """企业微信部门服务封装"""
-from typing import Dict, Any, Optional
+from typing import Any, Dict, Optional
+
 from common.api_client import ApiClient
-from common.wecom_token import get_token
-from common.wecom_error_code import is_success, extract_error_from_response
 from common.log_utils import log
+from common.wecom_error_code import extract_error_from_response, is_success
+from common.wecom_token import get_token
 
 
 class DepartmentService:

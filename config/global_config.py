@@ -19,11 +19,13 @@ ALLURE_REPORT_DIR = REPORTS_DIR / "allure-report"
 for d in [LOGS_DIR, SCREENSHOTS_DIR, ALLURE_RESULTS_DIR, ALLURE_REPORT_DIR]:
     d.mkdir(parents=True, exist_ok=True)
 
-# ==================== 环境配置 ====================
+
+# ===================== 环境配置 ====================
 class Env(str, Enum):
     DEV = "dev"
     TEST = "test"
     PROD = "prod"
+
 
 CURRENT_ENV = Env(os.getenv("TEST_ENV", "test"))
 

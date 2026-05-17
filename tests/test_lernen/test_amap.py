@@ -7,6 +7,7 @@
 
 import requests
 
+
 def test_amap():
     url = "https://httpbin.ceshiren.com/get"
     args = {}

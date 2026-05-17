@@ -2,7 +2,8 @@
 # -*- coding: utf-8 -*-
 """企业微信错误码映射"""
 from enum import IntEnum
-from typing import Dict, Any, Optional
+from typing import Any, Dict, Optional
+
 from common.log_utils import log
 
 

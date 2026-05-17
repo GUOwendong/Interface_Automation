@@ -7,6 +7,12 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+*.egg
 
 # Pytest 缓存
 .pytest_cache/
@@ -42,4 +48,8 @@ Thumbs.db
 
 # 环境
 .env
+.env.*
 *.secret
+
+# uv
+.uv/

@@ -1,17 +1,22 @@
 repos:
+  # 1. pre-commit-hooks（基础校验）
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.6.0
     hooks:
-      - id: trailing-whitespace
-      - id: end-of-file-fixer
-      - id: check-yaml
-      - id: check-json
+      - id: trailing-whitespace  # 去除行尾空格（链接2）
+      - id: end-of-file-fixer    # 确保文件以换行符结尾（链接2）
+      - id: check-yaml           # 校验YAML语法（链接2）
+      - id: check-json           # 校验JSON语法（链接2）
+
+  # 2. black（代码格式化）
   - repo: https://github.com/psf/black
     rev: 24.10.0
     hooks:
-      - id: black
+      - id: black  # 无妥协的Python格式化工具（链接3）
+
+  # 3. isort（导入排序，适配black）
   - repo: https://github.com/PyCQA/isort
     rev: 5.13.2
     hooks:
       - id: isort
-        args: [--profile=black]
+        args: [--profile=black]  # 匹配black的格式化风格（链接1）
